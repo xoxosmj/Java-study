@@ -22,18 +22,37 @@ public class SungJukSort implements SungJuk {
             if (num == 3) break;
 
             if (num == 1) {
-                Collections.sort(list);
+                Comparator<SungJukDTO> comparator1 = new Comparator<SungJukDTO>() {
+
+                    @Override
+                    public int compare(SungJukDTO o1, SungJukDTO o2) {
+                        return o1.getTot()*-1;
+                    }
+                };
+                Collections.sort(list, comparator1);
                 for (SungJukDTO output : list) {
                     System.out.println(output);
                 }
+                break;
 
-            } else if (num == 2) {
+                }
 
+             else if (num == 2) {
+                Comparator<SungJukDTO> comparator2 = new Comparator<SungJukDTO>() {
+
+                    @Override
+                    public int compare(SungJukDTO o1, SungJukDTO o2) {
+                        return o1.getName().compareTo(o2.getName()); //compareTo(): 자바에서 문자열을 사전순으로 비교할 때 사용하는 메서드입니다.
+                    }
+                };
+                Collections.sort(list, comparator2);
+                for (SungJukDTO output : list) {
+                    System.out.println(output);
+                }
+                break;
             } else {
                 System.out.println("올바른 숫자를 입력하세요");
             }
         }
     }
-
-
 }

@@ -1,6 +1,6 @@
 package sungJuk;
 
-public class SungJukDTO implements Comparable<SungJukDTO>{
+public class SungJukDTO {
 
     private String name;
     private int no, kor, eng, math, tot;
@@ -91,7 +91,7 @@ public class SungJukDTO implements Comparable<SungJukDTO>{
     }
 
 
-    @Override
+   /* @Override
     public int compareTo(SungJukDTO sungJukDTO) {
         //총점으로 내림차순 이기때문에 -1과 1이 바뀜
 
@@ -99,5 +99,7 @@ public class SungJukDTO implements Comparable<SungJukDTO>{
         else if(this.tot < sungJukDTO.tot) return 1;
         else
         return 0;
-    }
+    }*/
+
+
 }
