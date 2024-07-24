@@ -43,12 +43,53 @@ public class SchoolMain {
         System.out.println("4. 이전메뉴");
         System.out.println("***************");
         System.out.println("번호 선택 : ");
+        String name = null;
+        String value = null;
 
         int menu = sc.nextInt();
 
         if (menu == 4) return;
 
-        else if (menu == 1) {
+        switch (menu) {
+            case 1:
+                System.out.println("이름 입력 : ");
+                name = sc.next();
+                System.out.println("학번 입력 : ");
+                value = sc.next();
+                break;
+
+            case 2:
+                System.out.println("이름 입력 : ");
+                name = sc.next();
+                System.out.println("과목 입력 : ");
+                value = sc.next();
+                break;
+
+            case 3:
+                System.out.println("이름 입력 : ");
+                name = sc.next();
+                System.out.println("부서 입력 : ");
+                value = sc.next();
+                break;
+
+
+        }
+
+        getConnection();
+        try {
+            ps = con.prepareStatement("INSERT into school values (?,?,?)");
+            ps.setString(1, name);
+            ps.setString(2, value );
+            ps.setString(3, String.valueOf(menu));
+
+            int i = ps.executeUpdate();
+            System.out.println(i + "개의 행이 삽입되었습니다.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+       /* else if (menu == 1) {
             System.out.println("이름 입력 : ");
             String name = sc.next();
             System.out.println("학번 입력 : ");
@@ -105,65 +146,62 @@ public class SchoolMain {
             }
 
 
-        }//case 3
-        else {
-            System.out.println("올바른 번호를 입력하세요");
-            return;
-        }
+        }//case 3*/
+
+
+
+public void deleteArticle() {
+    System.out.println("***************");
+    System.out.println("삭제를 원하는 이름 입력 : ");
+    String name = new Scanner(System.in).next();
+   getConnection();
+
+    try {
+        ps = con.prepareStatement("DELETE FROM school where name = ?");
+        ps.setString(1, name);
+        int i = ps.executeUpdate();
+        System.out.println(i + "개의 행이 삭제되었습니다");
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
 
-    public void deleteArticle() {
+}
+
+
+public void menu() {
+    Scanner sc = new Scanner(System.in);
+    while (true) {
         System.out.println("***************");
-        System.out.println("삭제를 원하는 이름 입력 : ");
-        String name = new Scanner(System.in).next();
-        getConnection();
+        System.out.println("\t관리");
+        System.out.println("***************");
+        System.out.println("1. 입력 ");
+        System.out.println("2. 검색 ");
+        System.out.println("3. 삭제 ");
+        System.out.println("4. 종료 ");
+        System.out.println("***************");
+        System.out.print("번호 선택 : ");
+        int menu = sc.nextInt();
 
-        try {
-            ps = con.prepareStatement("DELETE FROM school where name = ?");
-            ps.setString(1, name);
-            int i = ps.executeUpdate();
-            System.out.println(i + "개의 행이 삭제되었습니다");
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (menu == 4) {
+            System.out.println("프로그램을 종료합니다");
+            break;
+        } else if (menu == 1) {
+            insertArticle();
+        } else if (menu == 2) {
+            break;
+
+        } else if (menu == 3) {
+            deleteArticle();
+
+        } else {
+            System.out.println("올바른 번호를 입력하세요");
         }
-
-    }
-
-
-    public void menu() {
-        Scanner sc = new Scanner(System.in);
-        while (true) {
-            System.out.println("***************");
-            System.out.println("\t관리");
-            System.out.println("***************");
-            System.out.println("1. 입력 ");
-            System.out.println("2. 검색 ");
-            System.out.println("3. 삭제 ");
-            System.out.println("4. 종료 ");
-            System.out.println("***************");
-            System.out.print("번호 선택 : ");
-            int menu = sc.nextInt();
-
-            if (menu == 4) {
-                System.out.println("프로그램을 종료합니다");
-                break;
-            } else if (menu == 1) {
-                insertArticle();
-            } else if (menu == 2) {
-                break;
-
-            } else if (menu == 3) {
-                deleteArticle();
-
-            } else {
-                System.out.println("올바른 번호를 입력하세요");
-            }
-        }// while
-    }
+    }// while
+}
 
 
-    public static void main(String[] args) {
-        SchoolMain main = new SchoolMain();
-        main.menu();
-    }
+public static void main(String[] args) {
+    SchoolMain main = new SchoolMain();
+    main.menu();
+}
 }
