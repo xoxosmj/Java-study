@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8d62bbf-23c0-4993-8c8a-27a8e804fc04" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/book2/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/book2/BookDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/book2/BookFileRead.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/book2/BookFileWrite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/book2/BookInsert.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/book2/BookMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/book2/BookPrint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/book2/BookService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/book2/BookTitleAsc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/book2/BookTitleSearch.java" afterDir="false" />
-    </list>
+    <list default="true" id="d8d62bbf-23c0-4993-8c8a-27a8e804fc04" name="Changes" comment="1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,8 +33,10 @@
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/bitcamp/Desktop",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -101,8 +86,25 @@
       <workItem from="1721782554023" duration="1229000" />
       <workItem from="1721784035751" duration="27000" />
       <workItem from="1721784074616" duration="366000" />
-      <workItem from="1721784453886" duration="6529000" />
+      <workItem from="1721784453886" duration="6856000" />
     </task>
+    <task id="LOCAL-00001" summary="book1(숙제) book2(정답)">
+      <option name="closed" value="true" />
+      <created>1721791127430</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1721791127430</updated>
+    </task>
+    <task id="LOCAL-00002" summary="1">
+      <option name="closed" value="true" />
+      <created>1721791322918</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1721791322918</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,5 +112,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="book1(숙제) book2(정답)" />
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
 </project>
