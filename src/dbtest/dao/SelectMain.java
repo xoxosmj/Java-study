@@ -1,2 +1,4 @@
-package dbtest.dao;public class SelectMain {
+package dbtest.dao;
+
+public class SelectMain {
 }
