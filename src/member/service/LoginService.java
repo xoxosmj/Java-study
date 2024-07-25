@@ -8,11 +8,12 @@ import java.util.Scanner;
 @NoArgsConstructor
 
 public class LoginService implements Member {
-    Scanner scanner = new Scanner(System.in);
-    MemberDAO dao = MemberDAO.getInstance();
+
 
     @Override
     public void execute() {
+        Scanner scanner = new Scanner(System.in);
+        MemberDAO dao = MemberDAO.getInstance();
         while (true) {
             boolean login = false;
             System.out.println();

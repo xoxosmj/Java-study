@@ -11,18 +11,19 @@ public class UpdateService implements Member {
 
     @Override
     public void execute() {
+        MemberDAO dao = MemberDAO.getInstance();
+        MemberDTO dto; //값을 다가져와야함
+
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
             System.out.print("아이디로 검색 : ");
             String id = scanner.next();
-            MemberDAO dao = MemberDAO.getInstance();
-            MemberDTO dto = dao.getMember(id); //값을 다가져와야함
-
+            dto = dao.getMember(id);
 
             if (dto == null) {
                 System.out.println("검색 결과 없음");
-                continue;
+
             } else {
                 System.out.println(dto.getName() + "\t" + dto.getId() + "\t" + dto.getPwd() + "\t" + dto.getPhone());
                 System.out.print("수정 할 이름 입력 : ");

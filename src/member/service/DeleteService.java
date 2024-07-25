@@ -5,10 +5,11 @@ import member.dao.MemberDAO;
 import java.util.Scanner;
 
 public class DeleteService implements Member {
-    MemberDAO dao = MemberDAO.getInstance();
+
 
     @Override
     public void execute() {
+        MemberDAO dao = MemberDAO.getInstance();
         Scanner scanner = new Scanner(System.in);
         String id, pwd;
         boolean login = false;
