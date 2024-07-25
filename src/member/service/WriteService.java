@@ -14,7 +14,7 @@ public class WriteService implements Member {
 
         Scanner scanner = new Scanner(System.in);
         String name, id, pwd, phone = null;
-        System.out.println("이름을 입력하세요 : ");
+        System.out.print("이름을 입력하세요 : ");
         name = scanner.next();
         //아이디 중복체크
         //아이디를 검색(select)
@@ -22,7 +22,7 @@ public class WriteService implements Member {
         //false 면 "사용 가능한 아이디" 라고 출력하고 비밀번호입력란으로 간다
 
         while (true) {
-            System.out.println("아이디를 입력하세요 : ");
+            System.out.print("아이디를 입력하세요 : ");
             id = scanner.next();
 
             if (dao.isExistID(id)) {
@@ -34,9 +34,9 @@ public class WriteService implements Member {
             }
         }
 
-        System.out.println("비밀번호를 입력하세요 : ");
+        System.out.print("비밀번호를 입력하세요 : ");
         pwd = scanner.next();
-        System.out.println("핸드폰 번호(010-xxxx-xxxx)를 입력하세요 : ");
+        System.out.print("핸드폰 번호(010-xxxx-xxxx)를 입력하세요 : ");
         phone = scanner.next();
 
 

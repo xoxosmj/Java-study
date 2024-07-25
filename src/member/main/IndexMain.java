@@ -31,19 +31,13 @@ public class IndexMain {
 
             if (option == 5) break;
 
-           else if (option == 1) {
+           if (option == 1)
                inter = new WriteService();
-               inter.execute();
-
-            }
-           else if (option == 2) {
+           else if (option == 2)
                inter = new LoginService();
+           else if (option == 3){}
 
-            }
-           else if (option == 3) {
-
-            }
-
+           inter.execute();
 
         }//while
     } //menu

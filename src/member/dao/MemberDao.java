@@ -1,5 +1,7 @@
 package member.dao;
 
+
+import lombok.Data;
 import member.bean.MemberDTO;
 
 import java.sql.*;
@@ -96,5 +98,36 @@ public class MemberDao {
         return exist;
     }
 
+    public boolean login(String id, String pwd) {
+        boolean login = false;
+        String sql = "select name from member where id = ? and pwd = ?";
+        getConnection();
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, id);
+            ps.setString(2, pwd);
+            rs = ps.executeQuery();
+            if (rs.next()) login = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return login;
+    }
+
+    public String loginname(String id, String pwd) {
+        String loginname = null;
+        try {
+            con.prepareStatement("select name from member where id = ? and pwd = ?");
+            ps.setString(1, id);
+            ps.setString(2, pwd);
+            rs = ps.executeQuery();
+
+            if (rs.next())
+                loginname = rs.getString("name");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return loginname;
+    }
 }
 
