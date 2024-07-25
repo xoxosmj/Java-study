@@ -110,6 +110,15 @@ public class MemberDao {
             if (rs.next()) login = true;
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
         }
         return login;
     }
@@ -126,8 +135,41 @@ public class MemberDao {
                 loginname = rs.getString("name");
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
         }
         return loginname;
+    }
+
+    public int update(MemberDTO dto) {
+        int su = 0;
+        getConnection();
+        String sql = "update member set name=?, pwd=?, phone=? where id = ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, dto.getName());
+            ps.setString(2, dto.getPwd());
+            ps.setString(3, dto.getPhone());
+            ps.setString(4, dto.getId());
+            su = ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) ps.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return su;
     }
 }
 

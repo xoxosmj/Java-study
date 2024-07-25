@@ -3,6 +3,7 @@ package member.main;
 
 import member.service.LoginService;
 import member.service.Member;
+import member.service.UpdateService;
 import member.service.WriteService;
 
 
@@ -35,7 +36,8 @@ public class IndexMain {
                inter = new WriteService();
            else if (option == 2)
                inter = new LoginService();
-           else if (option == 3){}
+           else if (option == 3)
+               inter = new UpdateService();
 
            inter.execute();
 
