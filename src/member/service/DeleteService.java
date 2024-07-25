@@ -1,6 +1,5 @@
 package member.service;
 
-import com.sun.source.tree.WhileLoopTree;
 import member.dao.MemberDao;
 
 import java.util.Scanner;
