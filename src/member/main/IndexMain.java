@@ -1,10 +1,7 @@
 package member.main;
 
 
-import member.service.LoginService;
-import member.service.Member;
-import member.service.UpdateService;
-import member.service.WriteService;
+import member.service.*;
 
 
 import java.util.Scanner;
@@ -38,6 +35,13 @@ public class IndexMain {
                inter = new LoginService();
            else if (option == 3)
                inter = new UpdateService();
+           else if (option == 4)
+               inter = new DeleteService();
+
+           else {
+               System.out.println("올바른 숫자를 입력하세요");
+               continue;
+           }
 
            inter.execute();
 

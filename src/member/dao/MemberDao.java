@@ -171,5 +171,28 @@ public class MemberDao {
         }
         return su;
     }
+
+    public int delete(String id, String pwd) {
+        int su = 0;
+        getConnection();
+        String sql = "delete from member where id = ? and pwd = ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1,id);
+            ps.setString(2,pwd);
+            su = ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }   finally {
+            try {
+                if(ps!=null) ps.close();
+                if (con!=null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return su;
+    }
 }
 
