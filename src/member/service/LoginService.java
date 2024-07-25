@@ -1,16 +1,15 @@
 package member.service;
 
 import lombok.NoArgsConstructor;
-import member.dao.MemberDao;
+import member.dao.MemberDAO;
 
-import javax.naming.Name;
 import java.util.Scanner;
 
 @NoArgsConstructor
 
 public class LoginService implements Member {
     Scanner scanner = new Scanner(System.in);
-    MemberDao dao = MemberDao.getInstance();
+    MemberDAO dao = MemberDAO.getInstance();
 
     @Override
     public void execute() {

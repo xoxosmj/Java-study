@@ -1,23 +1,30 @@
 package member.service;
 
 import member.bean.MemberDTO;
-import member.dao.MemberDao;
+import member.dao.MemberDAO;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class UpdateService implements Member {
 
-    MemberDao dao = MemberDao.getInstance();
-
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("아이디로 검색 : ");
-        String id = scanner.next();
 
         while (true) {
-            if (dao.isExistID(id)) {
+            System.out.print("아이디로 검색 : ");
+            String id = scanner.next();
+            MemberDAO dao = MemberDAO.getInstance();
+            MemberDTO dto = dao.getMember(id); //값을 다가져와야함
 
+
+            if (dto == null) {
+                System.out.println("검색 결과 없음");
+                continue;
+            } else {
+                System.out.println(dto.getName() + "\t" + dto.getId() + "\t" + dto.getPwd() + "\t" + dto.getPhone());
                 System.out.print("수정 할 이름 입력 : ");
                 String name = scanner.next();
                 System.out.print("수정 할 비밀번호 입력 : ");
@@ -25,11 +32,17 @@ public class UpdateService implements Member {
                 System.out.print("수정 할 핸드폰번호 입력 : ");
                 String phone = scanner.next();
 
-                MemberDTO dto = new MemberDTO(name, id, pwd, phone);
-                int su = dao.update(dto);
-                System.out.print(su+"개의 행을 수정하였습니다");
+                Map<String, String> map = new HashMap<>();
+                map.put("name", name);
+                map.put("id", id);
+                map.put("pwd", pwd);
+                map.put("phone", phone);
+
+                int su = 0;
+                su = dao.update(map);
+                System.out.print(su + "개의 행을 수정하였습니다");
                 break;
-            } else System.out.print("검색 결과 없음");
+            }
         }
     }
 }

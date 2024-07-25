@@ -1,7 +1,7 @@
 package member.service;
 
 import member.bean.MemberDTO;
-import member.dao.MemberDao;
+import member.dao.MemberDAO;
 
 import java.util.Scanner;
 
@@ -10,7 +10,7 @@ public class WriteService implements Member {
     @Override
     public void execute() {
 
-        MemberDao dao = MemberDao.getInstance();
+        MemberDAO dao = MemberDAO.getInstance();
 
         Scanner scanner = new Scanner(System.in);
         String name, id, pwd, phone = null;

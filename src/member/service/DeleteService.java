@@ -1,11 +1,11 @@
 package member.service;
 
-import member.dao.MemberDao;
+import member.dao.MemberDAO;
 
 import java.util.Scanner;
 
 public class DeleteService implements Member {
-    MemberDao dao = MemberDao.getInstance();
+    MemberDAO dao = MemberDAO.getInstance();
 
     @Override
     public void execute() {

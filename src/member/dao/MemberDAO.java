@@ -1,13 +1,13 @@
 package member.dao;
 
 
-import lombok.Data;
 import member.bean.MemberDTO;
 
 import java.sql.*;
+import java.util.Map;
 
-public class MemberDao {
-    private static MemberDao instance; //싱글톤처리
+public class MemberDAO {
+    private static MemberDAO instance; //싱글톤처리
 
     private String driver = "oracle.jdbc.driver.OracleDriver";
     private String url = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -18,7 +18,7 @@ public class MemberDao {
     private PreparedStatement ps;
     private ResultSet rs;
 
-    private MemberDao() {
+    private MemberDAO() {
         try {
             Class.forName(driver);
             System.out.println("driver loaded");
@@ -27,10 +27,10 @@ public class MemberDao {
         }
     }
 
-    public static MemberDao getInstance() { //싱글톤처리, 생성자보다 밑에있어야함
+    public static MemberDAO getInstance() { //싱글톤처리, 생성자보다 밑에있어야함
         if (instance == null) { //static은 null이 실행시 한번밖에 안됨
-            synchronized (MemberDao.class) {
-                instance = new MemberDao();
+            synchronized (MemberDAO.class) {
+                instance = new MemberDAO();
             }
         }
         return instance;
@@ -131,8 +131,7 @@ public class MemberDao {
             ps.setString(2, pwd);
             rs = ps.executeQuery();
 
-            if (rs.next())
-                loginname = rs.getString("name");
+            if (rs.next()) loginname = rs.getString("name");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -148,16 +147,41 @@ public class MemberDao {
         return loginname;
     }
 
-    public int update(MemberDTO dto) {
+    public MemberDTO getMember(String id) {
+        MemberDTO dto = null;
+        getConnection();
+
+        String sql = "select * from member where id = ?";
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                dto = new MemberDTO();
+                dto.setName(rs.getString("name"));
+                dto.setId(rs.getString("id"));
+                dto.setPwd(rs.getString("pwd"));
+                dto.setPhone(rs.getNString("phone"));
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return dto;
+    }
+
+    public int update(Map<String, String> map) {
         int su = 0;
         getConnection();
         String sql = "update member set name=?, pwd=?, phone=? where id = ?";
         try {
             ps = con.prepareStatement(sql);
-            ps.setString(1, dto.getName());
-            ps.setString(2, dto.getPwd());
-            ps.setString(3, dto.getPhone());
-            ps.setString(4, dto.getId());
+            ps.setString(1, map.get("name"));
+            ps.setString(2, map.get("pwd"));
+            ps.setString(3, map.get("phone"));
+            ps.setString(4, map.get("id"));
             su = ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -178,15 +202,15 @@ public class MemberDao {
         String sql = "delete from member where id = ? and pwd = ?";
         try {
             ps = con.prepareStatement(sql);
-            ps.setString(1,id);
-            ps.setString(2,pwd);
+            ps.setString(1, id);
+            ps.setString(2, pwd);
             su = ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }   finally {
+        } finally {
             try {
-                if(ps!=null) ps.close();
-                if (con!=null) con.close();
+                if (ps != null) ps.close();
+                if (con != null) con.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
