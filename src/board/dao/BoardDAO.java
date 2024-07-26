@@ -20,7 +20,6 @@ public class BoardDAO {
     private BoardDAO() {
         try {
             Class.forName(driver);
-            System.out.println("driver loaded");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -39,7 +38,7 @@ public class BoardDAO {
     public void getConnection() {
         try {
             con = DriverManager.getConnection(url, username, password);
-            System.out.println("connection established");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -76,6 +75,24 @@ public class BoardDAO {
     public void list() {
         getConnection();
         String sql = "select * from board_java";
+        try {
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                System.out.println(+rs.getInt(1) + "   " + rs.getString(4) + "   " + rs.getString(2) + "   " + rs.getDate(6));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                if(rs != null) rs.close();
+                if(ps != null) ps.close();
+                if(con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     public void view(int choice) {
