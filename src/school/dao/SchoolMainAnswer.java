@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class SchoolMain {
+public class SchoolMainAnswer {
 	private String driver = "oracle.jdbc.driver.OracleDriver";
     private String url = "jdbc:oracle:thin:@localhost:1521:xe";
     private String username = "c##java";
@@ -17,7 +17,7 @@ public class SchoolMain {
     private PreparedStatement pstmt;
     private ResultSet rs;
     
-    public SchoolMain() {
+    public SchoolMainAnswer() {
     	try {
             Class.forName(driver);
         } catch (ClassNotFoundException e) {
@@ -221,8 +221,8 @@ public class SchoolMain {
 	}//insertArticle()
 	
 	public static void main(String[] args) {
-		SchoolMain schoolMain = new SchoolMain();
-		schoolMain.menu();
+		SchoolMainAnswer schoolMainAnswer = new SchoolMainAnswer();
+		schoolMainAnswer.menu();
 		System.out.println("프로그램을 종료합니다");
 	}
 
