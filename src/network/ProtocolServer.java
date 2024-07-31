@@ -4,6 +4,8 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import static network.ProtocolClient.PORT;
+
 public class ProtocolServer {
     ServerSocket serverSocket; //클라이언트가 올때까지 기다린다
     Socket socket;
@@ -12,7 +14,7 @@ public class ProtocolServer {
 
     public ProtocolServer() {
         try {
-            serverSocket = new ServerSocket(9400); // 9500포트에 클라이언트가 들어오길 대기
+            serverSocket = new ServerSocket(PORT); // 9500포트에 클라이언트가 들어오길 대기
             System.out.println("서버 준비완료...");
 
             socket = serverSocket.accept(); // 클라이언트를 낚아채서 대화할 소켓을 생성한다.
@@ -31,7 +33,7 @@ public class ProtocolServer {
         String line;
 
         try {
-            while(true) {
+            while (true) {
                 //클라이언트로부터 받기
                 line = br.readLine();
                 System.out.println(line);

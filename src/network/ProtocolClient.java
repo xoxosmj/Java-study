@@ -10,10 +10,11 @@ public class ProtocolClient {
     BufferedReader br;
     BufferedWriter bw;
     Scanner sc;
+    public static int PORT = 9400;
 
     public ProtocolClient() {
         try {
-            socket = new Socket("localhost", 9400);
+            socket = new Socket("localhost", PORT);
 
             //IO
             br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
